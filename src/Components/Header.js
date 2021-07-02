@@ -1,6 +1,13 @@
 function Header() {
+  const headerStyle = {
+    backgroundColor: 'rgb(76, 195, 255)',
+    marginTop: '0px',
+    padding: '10px',
+    display: 'flex',
+    alignItems: 'center'
+  };
   return (
-    <h2 style={{ margin: '38px', padding: '38px' }}>Tap Room</h2>
+    <h3 style={headerStyle}>Tap Room</h3>
   )
 }
 
