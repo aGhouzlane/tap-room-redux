@@ -9,10 +9,9 @@ function Footer() {
 
   return (
     <div style={footerStyle}>
-      <ImTicket alt='a ticket' style={{ fontSize: '30px' }} />
       <h3>Footer</h3>
       <span>&nbsp;-&nbsp;</span>
-      <p>&copy; 2021 Ahmed, Carlos, Seth</p>
+      <p>&copy; 2021 Ahmed</p>
     </div>
   )
 }
