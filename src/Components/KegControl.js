@@ -13,14 +13,17 @@ class TicketControl extends React.Component {
 
   render(){
     let currentlyVisibleState = null;
+    let addKegButton = null;
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <KegForm />
     } else {
       currentlyVisibleState = <KegList />
+      addKegButton = <button onClick={this.handleClick}>Add keg</button>
     }
     return (
       <React.Fragment>
          {currentlyVisibleState}
+         {addTicketButton}
       </React.Fragment>
     );
   }
