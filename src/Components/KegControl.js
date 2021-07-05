@@ -11,6 +11,10 @@ class TicketControl extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState({formVisibleOnPage: true});
+  }
+
   render(){
     let currentlyVisibleState = null;
     let addKegButton = null;
@@ -23,7 +27,7 @@ class TicketControl extends React.Component {
     return (
       <React.Fragment>
          {currentlyVisibleState}
-         {addTicketButton}
+         {addKegButton}
       </React.Fragment>
     );
   }
