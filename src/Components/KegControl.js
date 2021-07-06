@@ -14,9 +14,17 @@ class TicketControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedKeg != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedKeg: null
+      });
+    }
+    else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   handleAddingNewKegToList = (newKeg) => {
@@ -29,7 +37,7 @@ class TicketControl extends React.Component {
 
   handleChangingSelectedKeg = (id) => {
     const selectedKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
-    this.setState({selectedkeg: selectedKeg});
+    this.setState({ selectedkeg: selectedKeg });
   }
 
   render() {
@@ -37,15 +45,15 @@ class TicketControl extends React.Component {
     let buttonText = null;
 
     if (this.state.selectedKeg != null) {
-      currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} />
+      currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} />
       buttonText = "Return to Ticket List";
     }
     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <KegForm onNewKegCreation={this.handleAddingNewKegToList} />
       buttonText = "Return to Keg List";
     } else {
-      currentlyVisibleState = <KegList kegList={this.state.masterKegList} 
-      onKegSelection={this.handleChangingSelectedKeg}/>
+      currentlyVisibleState = <KegList kegList={this.state.masterKegList}
+        onKegSelection={this.handleChangingSelectedKeg} />
       buttonText = "Add keg";
     }
     return (
