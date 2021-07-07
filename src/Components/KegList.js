@@ -2,18 +2,19 @@ import React from 'react';
 import Keg from './Keg';
 import PropTypes from "prop-types";
 
-function KegList(props){
+function KegList(props) {
   return (
     <React.Fragment>
-      <hr/>
+      <hr />
       {props.kegList.map((keg) =>
-        <Keg 
+        <Keg
+          whenKegClicked={props.onKegSelection}
           name={keg.name}
           brand={keg.brand}
           price={keg.price}
           alcoholeContent={keg.alcoholeContent}
           id={keg.id}
-          key={keg.id}/>
+          key={keg.id} />
       )}
     </React.Fragment>
   );

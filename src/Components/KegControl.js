@@ -1,6 +1,7 @@
 import React from 'react';
 import KegForm from './KegForm';
 import KegList from './KegList';
+import KegDetail from './KegDetail';
 
 class TicketControl extends React.Component {
 
@@ -13,14 +14,18 @@ class TicketControl extends React.Component {
     };
   }
 
+  handleChangingSelectedKeg = (id) => {
+    const newSelectedKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
+    this.setState({ selectedkeg: newSelectedKeg });
+  }
+
   handleClick = () => {
     if (this.state.selectedKeg != null) {
       this.setState({
         formVisibleOnPage: false,
         selectedKeg: null
       });
-    }
-    else {
+    } else {
       this.setState(prevState => ({
         formVisibleOnPage: !prevState.formVisibleOnPage
       }));
@@ -35,12 +40,9 @@ class TicketControl extends React.Component {
     });
   }
 
-  handleChangingSelectedKeg = (id) => {
-    const selectedKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
-    this.setState({ selectedkeg: selectedKeg });
-  }
-
+  
   render() {
+
     let currentlyVisibleState = null;
     let buttonText = null;
 
@@ -56,6 +58,7 @@ class TicketControl extends React.Component {
         onKegSelection={this.handleChangingSelectedKeg} />
       buttonText = "Add keg";
     }
+
     return (
       <React.Fragment>
         {currentlyVisibleState}
@@ -63,7 +66,6 @@ class TicketControl extends React.Component {
       </React.Fragment>
     );
   }
-
 }
 
 export default TicketControl;
