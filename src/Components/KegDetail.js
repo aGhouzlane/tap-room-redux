@@ -5,7 +5,7 @@ function KegDetail(props) {
   const {keg, subtractPint } = props;
   return (
     <React.Fragment>
-      <h1>Keg Detail test </h1>
+      <h1>Keg Detail</h1>
       <p>{keg.name}</p>
       <p>{keg.brand}</p>
       <p>{keg.price}</p>
