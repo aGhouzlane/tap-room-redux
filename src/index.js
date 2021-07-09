@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import reducer from './reducers/keg-list-reducer';
 
+const store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
