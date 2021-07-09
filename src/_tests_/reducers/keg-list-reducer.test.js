@@ -23,7 +23,6 @@ describe('kegListReducer', () => {
 
     expect(ticketListReducer({}, action)).toEqual({
       [id]: {
-        names: name,
         name: name,
         brand: brand,
         price: price,
