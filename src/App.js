@@ -1,10 +1,15 @@
 import './App.css';
-import Home from './Pages/Home';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import KegControl from './Components/KegControl';
+
 
 function App() {
   return (
     <div className="App">
-      <Home />
+     <Header />
+     <KegControl />
+     <Footer />
     </div>
   );
 }

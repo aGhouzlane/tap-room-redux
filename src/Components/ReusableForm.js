@@ -1,22 +1,11 @@
 import React from "react";
-import { v4 } from 'uuid';
 import PropTypes from "prop-types";
 
-function KegForm(props) {
-
-  function handleNewKegFormSubmission(event) {
-    event.preventDefault();
-    props.onNewKegCreation({name: event.target.name.value, 
-      brand: event.target.brand.value, 
-      price: event.target.price.value, 
-      alcoholeContent: event.target.alcoholeContent.value,
-      id: v4()});
-  }
-
+function ReusableForm(props) {
   return (
     <React.Fragment>
       <h3>Add a Keg</h3>
-      <form onSubmit={handleNewKegFormSubmission}>
+      <form onSubmit={props.formSubmissionHandler}>
         <label>
           Name:
           <input type="text" name="name" />
@@ -39,8 +28,8 @@ function KegForm(props) {
   );
 }
 
-KegForm.propTypes = {
-  onNewTicketCreation: PropTypes.func
+ReusableForm.propTypes = {
+  formSubmissionHandler: PropTypes.func
 };
 
-export default KegForm;
+export default ReusableForm;
