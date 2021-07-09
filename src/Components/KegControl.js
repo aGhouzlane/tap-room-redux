@@ -82,4 +82,6 @@ class KegControl extends React.Component {
     }
   }
 
+  KegControl = connect()(KegControl);
+
   export default KegControl;
