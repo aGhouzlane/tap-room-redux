@@ -3,9 +3,12 @@ import Keg from './Keg';
 import PropTypes from "prop-types";
 
 function KegList(props) {
+  if (props.kegList == null) {
+    return null;
+  }
   return (
     <React.Fragment>
-      <hr/>
+      <hr />
       {Object.values(props.kegList).map((keg) =>
         <Keg
           whenKegClicked={props.onKegSelection}
@@ -17,7 +20,6 @@ function KegList(props) {
           id={keg.id}
           key={keg.id} />
       )}
-      
     </React.Fragment>
   );
 }

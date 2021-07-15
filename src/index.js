@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 const store = createStore(reducer);
 
 store.subscribe(() =>
-  console.log(store.getState())
+  store.getState()
 );
 
 ReactDOM.render(
