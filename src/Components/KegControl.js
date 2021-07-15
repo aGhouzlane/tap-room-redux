@@ -49,7 +49,7 @@ class KegControl extends React.Component {
   }
 
   handleSubtractPint = (id) => {
-    const selectedKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
+    const selectedKeg = this.props.masterKegList[id];
     if (selectedKeg.pint > 0) {
       selectedKeg.pint -= 1;
       this.setState({ selectedKeg: selectedKeg });
