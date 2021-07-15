@@ -71,8 +71,8 @@ class KegControl extends React.Component {
       else if (this.state.formVisibleOnPage) {
         currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
         buttonText = "Return to Keg List";
-
-      } else {
+      } 
+      else {
         currentlyVisibleState = <KegList kegList={this.props.masterKegList}
           onKegSelection={this.handleChangingSelectedKeg}  /> 
         buttonText = "Add keg";
@@ -93,7 +93,7 @@ class KegControl extends React.Component {
 
   const mapStateToProps = state => {
     return {
-      masterTicketList: state
+      masterKegList: state
     }
   }
 
