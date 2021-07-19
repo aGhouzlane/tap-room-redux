@@ -30,7 +30,7 @@ class KegControl extends React.Component {
 
   handleAddingNewKegToList = (newKeg) => {
     const { dispatch } = this.props;
-    const { id, name, brand, price, alcoholeContent } = newKeg;
+    const { id, name, brand, price, alcoholeContent} = newKeg;
     const action = {
       type: 'ADD_KEG',
       id: id,
