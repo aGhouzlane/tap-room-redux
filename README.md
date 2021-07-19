@@ -23,7 +23,9 @@ A react/redux application that allows users to add Kegs to a list. When users cl
 2. Navigate to the `tap-room-redux/` directory on your computer
 3. Open with your preferred text editor to view the code base
 4. Run command `npm i` 
-5. To run the project, rum command `npm run`
+5. To run the project, rum command `npm watch run`
+6. To test the project, run command `npm run test`
+
 
 ## License ⚖
 
