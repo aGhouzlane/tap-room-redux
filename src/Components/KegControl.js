@@ -30,7 +30,7 @@ class KegControl extends React.Component {
 
   handleAddingNewKegToList = (newKeg) => {
     const { dispatch } = this.props;
-    const { id, name, brand, price, alcoholeContent} = newKeg;
+    const { id, name, brand, price, alcoholeContent } = newKeg;
     const action = {
       type: 'ADD_KEG',
       id: id,
@@ -40,7 +40,7 @@ class KegControl extends React.Component {
       alcoholeContent: alcoholeContent
     }
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
+    this.setState({ formVisibleOnPage: false });
   }
 
   handleChangingSelectedKeg = (id) => {
@@ -59,44 +59,46 @@ class KegControl extends React.Component {
     }
   }
 
-    render() {
+  render() {
 
-      let currentlyVisibleState = null;
-      let buttonText = null;
+    let currentlyVisibleState = null;
+    let buttonText = null;
 
-      if (this.state.selectedKeg != null) {
-        currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} subtractPint = {this.handleSubtractPint}/>
-        buttonText = "Return to Keg List";
-      }
-      else if (this.state.formVisibleOnPage) {
-        currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
-        buttonText = "Return to Keg List";
-      } 
-      else {
-        currentlyVisibleState = <KegList kegList={this.props.masterKegList}
-          onKegSelection={this.handleChangingSelectedKeg}  /> 
-        buttonText = "Add keg";
-      }
-
-      return (
-        <React.Fragment>
-          {currentlyVisibleState}
-          <button onClick={this.handleClick}>{buttonText}</button>
-        </React.Fragment>
-      );
+    if (this.state.selectedKeg != null) {
+      currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} subtractPint={this.handleSubtractPint} />
+      buttonText = "Return to Keg List";
     }
-  }
-
-  KegControl.propTypes = {
-    masterKegList: PropTypes.object
-  };
-
-  const mapStateToProps = state => {
-    return {
-      masterKegList: state
+    else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
+      buttonText = "Return to Keg List";
     }
+    else {
+      currentlyVisibleState = <KegList kegList={this.props.masterKegList}
+        onKegSelection={this.handleChangingSelectedKeg} />
+      buttonText = "Add keg";
+    }
+
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
   }
+}
 
-  KegControl = connect(mapStateToProps)(KegControl);
+KegControl.propTypes = {
+  masterKegList: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
+};
 
-  export default KegControl;
+const mapStateToProps = state => {
+  return {
+    masterKegList: state.masterKegList,
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+
+KegControl = connect(mapStateToProps)(KegControl);
+
+export default KegControl;
