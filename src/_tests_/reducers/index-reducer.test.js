@@ -1,4 +1,9 @@
 import rootReducer from '../../reducers/index';
+import { createStore } from 'redux';
+import formVisibleReducer from '../../reducers/form-visible-reducer';
+import KegListReducer from '../../reducers/keg-list-reducer';
+
+let store = createStore(rootReducer);
 
 describe("rootReducer", () => {
 
@@ -8,5 +13,8 @@ describe("rootReducer", () => {
       formVisibleOnPage: false
     });
   });
-
+  
+  test('Check that initial state of formVisibleReducer matches root reducer', () => {
+    expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
+  });
 });
