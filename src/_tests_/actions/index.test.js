@@ -6,4 +6,16 @@ describe('help queue actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
+
+  it('addKeg should create ADD_KEG action', () => {
+    expect(actions.addKeg({name: 'Beer', brand: 'Budlight',
+     price: 2.50, alcoholeContent: 'alcohole', id: 1})).toEqual({
+      type: 'ADD_KEG',
+      name: 'Beer',
+      brand: 'Budlight',
+      price: 2.50,
+      alcoholeContent: 'alcohole',
+      id: 1
+    });
+  });
 });

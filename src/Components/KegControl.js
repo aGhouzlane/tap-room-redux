@@ -4,6 +4,7 @@ import KegList from './KegList';
 import KegDetail from './KegDetail';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class KegControl extends React.Component {
 
@@ -22,25 +23,18 @@ class KegControl extends React.Component {
         selectedKeg: null
       });
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage
-      }));
+      const { dispatch } = this.props;
+      const action = a.toggleForm();
+      dispatch(action);
     }
   }
 
   handleAddingNewKegToList = (newKeg) => {
     const { dispatch } = this.props;
-    const { id, name, brand, price, alcoholeContent } = newKeg;
-    const action = {
-      type: 'ADD_KEG',
-      id: id,
-      name: name,
-      brand: brand,
-      price: price,
-      alcoholeContent: alcoholeContent
-    }
-    this.setState({formVisibleOnPage: false});
+    const action = a.addKeg(newKeg);
     dispatch(action);
+    const action2 = a.toggleForm();
+    dispatch(action2);
   }
 
   handleChangingSelectedKeg = (id) => {
